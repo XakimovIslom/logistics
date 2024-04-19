@@ -6,4 +6,5 @@ urlpatterns = [
     path('category/', views.CategoryListView.as_view()),
     path('company/', views.CompanyListView.as_view()),
     path('contract/', views.ContractListView.as_view()),
+    path('company/<int:pk>/', views.CompanyContractListView.as_view()),
 ]

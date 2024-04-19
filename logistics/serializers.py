@@ -12,10 +12,18 @@ class CategorySerializer(serializers.ModelSerializer):
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = "__all__"
+        fields = ("title",)
 
 
 class ContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contract
-        fields = "__all__"
+        fields = ("title", "cost", "contract_number", "auto_number", "created_at")
+
+
+class CompanyContractSerializer(serializers.ModelSerializer):
+    contracts = ContractSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Company
+        fields = ("contracts",)

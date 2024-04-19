@@ -31,7 +31,9 @@ class Company(BaseModel):
 
 
 class Contract(BaseModel):
-    company = models.ForeignKey(Company, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255, default="contract_title")
+
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='contracts')
 
     akt = models.FileField(upload_to='contract/')
     invoice = models.FileField(upload_to='contract/')
@@ -42,4 +44,4 @@ class Contract(BaseModel):
     auto_number = models.CharField(max_length=255)
 
     def __str__(self):
-        return self.auto_number
+        return self.title
