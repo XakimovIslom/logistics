@@ -27,3 +27,11 @@ class CompanyContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
         fields = ("contracts",)
+
+
+class ContractListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contract
+        fields = (
+            "title", "company", "akt", "invoice", "zayavka", "cmr", "contract_number", "cost", "auto_number",
+            "created_at")
