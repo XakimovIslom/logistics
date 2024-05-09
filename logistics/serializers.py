@@ -6,32 +6,30 @@ from logistics.models import Category, Company, Contract
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ("title",)
+        fields = ("id", "title",)
 
 
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ("title",)
+        fields = ("id", "title",)
 
 
 class ContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contract
-        fields = ("title", "cost", "contract_number", "auto_number", "created_at")
-
-
-class CompanyContractSerializer(serializers.ModelSerializer):
-    contracts = ContractSerializer(many=True, read_only=True)
-
-    class Meta:
-        model = Company
-        fields = ("contracts",)
+        fields = ("id", "title", "cost", "contract_number", "auto_number", "created_at")
 
 
 class ContractListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contract
         fields = (
-            "title", "company", "akt", "invoice", "zayavka", "cmr", "contract_number", "cost", "auto_number",
+            "id", "title", "company", "contract_number", "cost", "auto_number",
             "created_at")
+
+
+class ContractListRetrieveSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contract
+        fields = ("id", "title", "akt", "invoice", "zayavka", "cmr")
