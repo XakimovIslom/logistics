@@ -264,24 +264,15 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
 
-# Modeltranslation
-# # gettext = lambda s: s
-# LANGUAGES = (
-#     ('ru', gettext('Russian')),
-#     ('en', gettext('English')),
-#     ('uz', gettext('Uzbek')),
-#
-# )
-
 LANGUAGES = (
-    ('en', 'English'),
-    ('ru', 'Russian'),
     ('uz', 'Uzbek'),
+    ('ru', 'Russian'),
+    ('en', 'English'),
 )
 
 LOCALE_PATHS = [
     BASE_DIR / 'locale/',
 ]
 
-MODELTRANSLATION_LANGUAGES = ('en', 'uz', 'ru')
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_LANGUAGES = ('uz', 'ru', 'en',)
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
