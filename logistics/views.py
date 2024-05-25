@@ -9,21 +9,21 @@ from logistics.serializers import ContractListRetrieveSerializer, CategorySerial
 
 class CategoryListAPIView(generics.ListAPIView):
     queryset = Category.objects.all()
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = CategorySerializer
 
 
 class CompanyListAPIView(generics.ListAPIView):
     queryset = Company.objects.all()
     serializer_class = CompanySerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['category']
 
 
 class CompanyContractListAPIView(generics.ListAPIView):
     serializer_class = ContractListSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         pk = self.kwargs.get('pk')
@@ -36,7 +36,7 @@ class CompanyContractListAPIView(generics.ListAPIView):
 
 class CompanyContractRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = ContractListRetrieveSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self):
         company_pk = self.kwargs.get('company_pk')
